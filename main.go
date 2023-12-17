@@ -226,7 +226,7 @@ func deleteNote(id []byte) {
 		log.Println("Ошибка при открытии файла logs.txt")
 		return
 	}
-	resp, err := http.Post("http://localhost:4040/delete", "application/text", bytes.NewBuffer(id))
+	resp, err := http.Post("http://localhost:4040/delete", "text/plain", bytes.NewBuffer(id))
 	if err != nil {
 		fmt.Fprintln(file, "Error sending POST request:", err)
 		log.Println("Ошибка при отправке POST запроса (подробности см. в файле logs.txt)")
@@ -264,7 +264,7 @@ func readNote(id []byte) {
 		log.Println("Ошибка при открытии файла logs.txt")
 		return
 	}
-	resp, err := http.Post("http://localhost:4040/read", "application/text", bytes.NewBuffer(id))
+	resp, err := http.Post("http://localhost:4040/read", "text/plain", bytes.NewBuffer(id))
 	if err != nil {
 		fmt.Fprintln(file, "Error sending POST request:", err)
 		log.Println("Ошибка при отправке POST запроса (подробности см. в файле logs.txt)")
